@@ -1,4 +1,423 @@
 @charset "UTF-8";
-body{
-  background-color: red;
+
+/* リセットCSS */
+body, ol, ul, li, p, h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 1);
+}
+
+/* 共通 */
+* {
+  box-sizing: border-box;
+}
+
+/* タイマー */
+.timer_container {
+  position: absolute;
+  top: 10px;
+  left: 300px;
+  color: #707070;
+}
+
+.timer .time {
+  font-size: 1.5rem;
+}
+
+/* カレンダー */
+.month {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.calendar .week, .calendar .days {
+  display: grid;
+}
+
+.calendar .week {
+  place-items: center;
+  grid-template-columns: 160px 160px 160px 160px 160px 160px 160px;
+  grid-template-rows: 50px;
+  font-size: 21px;
+  font-weight: bold;
+  color: #C0C247;
+  border: 1px solid #C0C247;
+  margin: 1px;
+}
+
+.week div {
+  border: 1px solid #C0C247;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  line-height: 50px;
+}
+
+.days {
+  grid-template-columns: 160px 160px 160px 160px 160px 160px 160px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.days div {
+  font-size: 1rem;
+  padding-left: 5px;
+  padding-right: 15px;
+  border: 1px solid #C0C247;
+}
+
+.days div ul li {
+  font-size: 1rem;
+}
+
+.days div ul li::before {
+  content: "・";
+}
+
+.sunday {
+  color: #F86A64;
+}
+
+.saturday {
+  color: #999FFF;
+}
+
+.blank {
+  background-color: antiquewhite;
+}
+
+.today {
+  background-color: aliceblue;
+}
+
+/* カレンダー月切り替え */
+.month_box {
+  font-size: 21px;
+  font-weight: bold;
+  color: #707070;
+  display: flex;
+  align-items: center;
+  width: 800px;
+  margin: auto;
+  position: relative;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.us-no {
+  user-select: none;
+}
+
+.month_now {
+  display: grid;
+  width: 230px;
+  grid-template-columns: 100px auto 100px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  border-bottom: 1px solid #707070;
+  color: #707070;
+}
+
+.month_now .span1 {
+  display: inline-block;
+  height: 20px;
+  line-height: 50px;
+  vertical-align: bottom;
+  margin: 5px;
+}
+
+.days ul li span {
+  display: inline-block;
+  width: 230px;
+  text-align: center;
+  background-color: antiquewhite;
+  border-radius: 10px;
+  padding-top: 10px;
+}
+
+#form_close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.modal_bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9998;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.form_wrap {
+  width: 500px;
+  height: 400px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 15px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  z-index: 9999;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.regi_date {
+  font-size: 30px;
+  font-weight: bold;
+  color: #707070;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.item_name {
+  font-size: 28px;
+  font-weight: bold;
+  color: #707070;
+}
+
+.priority_wrap, .taskname_wrap, .duedate_wrap {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 35px 20px;
+}
+
+.priority_list, #calender_taskname {
+  width: var(--item-width);
+  font-size: 22px;
+  border-radius: 10px;
+}
+
+.taskname_wrap > label {
+  padding-top: 10px;
+}
+
+.priority_list {
+  text-align-last: end;
+}
+
+.duedate-month, .duedate-day {
+  font-size: 22px;
+  border-radius: 10px;
+  text-align: end;
+  padding-right: 5px;
+  height: 40px;
+}
+
+#calender_taskname {
+  height: 120px;
+  padding: 10px 10px 10px 15px;
+  line-height: 35px;
+}
+
+.modal_btn {
+  text-align: end;
+}
+
+.modal_btn > input {
+  font-size: 25px;
+  width: 80px;
+  height: 40px;
+  border-radius: 10px;
+  margin-right: 25px;
+}
+
+.modal_bg {
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+/* TODO */
+.todo_wrap {
+  width: 1220px;
+  margin: 30px auto 0;
+}
+
+h1 {
+  width: 100%;
+  margin: 10px;
+  font-size: 28px;
+  padding-left: 20px;
+  border: 1px solid black;
+}
+
+/* inputFormArea */
+#inputFormArea {
+  display: flex;
+  margin: 20px 50px 0;
+}
+
+#inputFormArea h2 {
+  width: 80px;
+  height: 40px;
+}
+
+#inputFormArea form div span {
+  color: #707070;
+  font-weight: bold;
+}
+
+#inputFormArea form select {
+  border-radius: 20px;
+}
+
+#inputFormArea form .todo_priority {
+  width: 70px;
+  height: 40px;
+  padding-left: 30%;
+  font-size: 1rem;
+}
+
+#inputFormArea form .setup-date-month,
+#inputFormArea form .setup-date-day,
+#inputFormArea form .limit-date-month,
+#inputFormArea form .limit-date-day {
+  width: 50px;
+  height: 40px;
+  padding-left: 5%;
+}
+
+#inputFormArea form select option {
+  margin: 0 auto;
+}
+
+#inputFormArea form div input[type="text"] {
+  width: 450px;
+  height: 40px;
+  border-width: 1px;
+  border-radius: 20px;
+  line-height: 40px;
+  padding-left: 20px;
+  font-size: 1rem;
+}
+
+#inputFormArea form input[type="submit"],
+#inputFormArea form input[type="reset"] {
+  width: 70px;
+  height: 40px;
+  border-width: 1px;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  background-color: white;
+  margin-top: 25px;
+  font-size: 1rem;
+}
+
+#inputFormArea form input[type="submit"] {
+  margin-right: 10px;
+}
+
+/* 二つのTaskAreaのボックスの大きさなど */
+.taskarea {
+  width: 1140px;
+  margin: 10px auto;
+  background-color: #faebd7;
+  border-radius: 20px;
+  color: #707070;
+  padding: 10px 20px;
+}
+
+.taskarea h2 {
+  font-size: 1rem;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+.taskarea--brock,
+.taskarea--brock ul {
+  display: flex;
+}
+
+.taskarea--brock {
+  width: 1100px;
+  height: 60px;
+  background-color: white;
+  color: black;
+  padding: 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.taskarea--brock ul li:nth-of-type(1) {
+  width: 70px;
+  padding-left: 25px;
+}
+
+.taskarea--brock ul li:nth-of-type(2),
+.taskarea--brock ul li:nth-of-type(4) {
+  width: 140px;
+}
+
+.taskarea--brock ul li:nth-of-type(3) {
+  width: 450px;
+}
+
+.completed-btn,
+.delete-btn,
+.return-btn {
+  width: 70px;
+  height: 40px;
+  border-width: 1px;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  background-color: white;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+.delete-btn {
+  margin-right: 0px;
+}
+
+.taskarea--brock ul li {
+  border: 1px solid black;
+  border-radius: 20px;
+  margin-right: 10px;
+  padding-left: 20px;
+  line-height: 40px;
+}
+
+.todo_wrap form {
+  width: 1010px;
+  height: 90px;
+  background-color: #faebd7;
+  display: flex;
+  margin-left: 20px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+#inputFormArea form div {
+  margin-right: 10px;
+}
+
+#inputFormArea form div p,
+#inputFormArea form div label {
+  color: #707070;
+  font-weight: bold;
+  padding-left: 20px;
+}
+
+#inputFormArea form div:first-of-type p {
+  text-align: center;
+  padding-left: 0;
 }
