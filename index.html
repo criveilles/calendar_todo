@@ -8,15 +8,15 @@
 <body>
 
   <div class="month_box">
-    <div id="pre_month" class="pointer us-no">＜前の月</div>
+    <div id="pre_month" class="pointer us-no">＜ 前の月</div>
     <div class="month_now">
-      <p><span class="year"></span><span class="month">月</span><span class="month_en"></span></p>
+      <p><span class="year"></span><span class="month"></span><span class="month_en"></span></p>
     </div>
-    <div id="next_month" class="pointer us-no">次の月＞</div>
+    <div id="next_month" class="pointer us-no">次の月 ＞</div>
 
     <div class="timer_container">
-      <p class="time"><span style="font-size:0.25rem">だいたい</span>今の時刻　
-        <span id="thour">00</span>:<span id="tmin">00</span>:<span id="tsec">00</span>
+      <p class="time">
+        <span style="font-size:0.25rem">だいたい</span>今の時刻　<span id="thour">00</span>:<span id="tmin">00</span>:<span id="tsec">00</span>
       </p>
     </div>
   </div>
@@ -55,17 +55,23 @@
 
         <div class="duedate_wrap">
           <p class="item_name">期日</p>
-          <span>
+          <div class="priority">
             <select class="duedate-month">
-              <option>1</option><option>2</option><option>3</option>
-              <option>4</option><option>5</option><option>6</option>
-              <option>7</option><option>8</option><option>9</option>
-              <option>10</option><option>11</option><option>12</option>
-            </select>月
-          </span>
-          <span>
-            <select class="duedate-day"></select>日
-          </span>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+            </select><span>月</span>
+            <select class="duedate-day"></select><span>日</span>
+          </div>
         </div>
 
         <div class="modal_btn">
@@ -80,9 +86,8 @@
     <div><button id="resetButton">ローカル削除</button></div>
     <div id="inputFormArea">
       <h2>入力欄</h2>
-      <form method="post" id="todo_form">
-        <div>
-          <p>優先度</p>
+      <form method="" id="todo_form">
+        <div><p>優先度</p>
           <select class="todo_priority">
             <option>高</option>
             <option>中</option>
@@ -92,13 +97,21 @@
 
         <div><p>登録日</p>
           <select class="setup-date-month">
-            <option>1</option><option>2</option><option>3</option>
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option><option>11</option><option>12</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
           </select><span>月</span>
-
-          <select class="setup-date-day"></select><span>日</span>
+          <select class="setup-date-day">
+          </select><span>日</span>
         </div>
 
         <div>
@@ -106,33 +119,41 @@
           <input type="text" id="taskname" placeholder="やること">
         </div>
 
-        <div><p>〆切日</p>
+        <div><p>期日</p>
           <select class="limit-date-month">
-            <option>1</option><option>2</option><option>3</option>
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option><option>11</option><option>12</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
           </select><span>月</span>
-
-          <select class="limit-date-day"></select><span>日</span>
+          <select class="limit-date-day">
+          </select><span>日</span>
         </div>
 
         <input id="todo_submit" type="submit" value="追加">
         <input id="todo_reset" type="reset" value="消去">
       </form>
     </div>
+    
+    <div class="taskarea">
+      <h2>進行中のもの</h2>
+      <div id="progressTaskArea"></div>
+    </div>
+    
+    <div class="taskarea">
+      <h2>完了したもの</h2>
+      <div id="completedTaskArea"></div>
+    </div>
   </div>
-
-  <div class="taskarea">
-    <h2>進行中のもの</h2>
-    <div id="progressTaskArea"></div>
-  </div>
-
-  <div class="taskarea">
-    <h2>完了したもの</h2>
-    <div id="completedTaskArea"></div>
-  </div>
-
-  <script src="script.js"></script>
+    
+    <script src="script.js"></script>
 </body>
 </html>
