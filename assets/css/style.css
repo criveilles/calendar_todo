@@ -207,7 +207,6 @@ a {
 }
 
 .priority_list, #calendar_taskname {
-  width: var(--item-width);
   font-size: 22px;
   border-radius: 10px;
   padding-right: 5px;
@@ -218,6 +217,7 @@ a {
 }
 
 .priority_list {
+  width: 15%;
   text-align-last: end;
 }
 
@@ -230,6 +230,7 @@ a {
 }
 
 #calendar_taskname {
+  width: 60%;
   height: 120px;
   padding: 10px 10px 10px 15px;
   line-height: 35px;

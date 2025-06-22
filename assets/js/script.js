@@ -40,7 +40,7 @@ function createCalendar (today){
     yearSpan.innerText = year;
 
     const monthSpan = document.querySelector('.month');
-    monthSpan.innerText = month;
+    monthSpan.innerText = " "+ month +" ";
 
     const monthenSpan = document.querySelector('.month_en');
     const monthen = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."];
