@@ -15,94 +15,31 @@ a {
 /* 共通 */
 * {
   box-sizing: border-box;
+  font-family: 'メイリオ', Meiryo,YuGothic,'Yu Gothic','Yu Gothic UI', sans-serif;
+
 }
 
 /* タイマー */
 .timer_container {
   position: absolute;
-  top: 10px;
-  left: 300px;
+  top: 18px;
+  left: -300px;
   color: #707070;
 }
 
-.timer .time {
+.timer, .time {
   font-size: 1.5rem;
 }
 
 /* カレンダー */
-.month {
-  font-size: 40px;
-  font-weight: bold;
-}
-
-.calendar .week, .calendar .days {
-  display: grid;
-}
-
-.calendar .week {
-  place-items: center;
-  grid-template-columns: 160px 160px 160px 160px 160px 160px 160px;
-  grid-template-rows: 50px;
-  font-size: 21px;
-  font-weight: bold;
-  color: #C0C247;
-  border: 1px solid #C0C247;
-  margin: 1px;
-}
-
-.week div {
-  border: 1px solid #C0C247;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  line-height: 50px;
-}
-
-.days {
-  grid-template-columns: 160px 160px 160px 160px 160px 160px 160px;
-  grid-auto-rows: minmax(100px, auto);
-}
-
-.days div {
-  font-size: 1rem;
-  padding-left: 5px;
-  padding-right: 15px;
-  border: 1px solid #C0C247;
-}
-
-.days div ul li {
-  font-size: 1rem;
-}
-
-.days div ul li::before {
-  content: "・";
-}
-
-.sunday {
-  color: #F86A64;
-}
-
-.saturday {
-  color: #999FFF;
-}
-
-.blank {
-  background-color: antiquewhite;
-}
-
-.today {
-  background-color: aliceblue;
-}
-
-/* カレンダー月切り替え */
 .month_box {
   font-size: 21px;
   font-weight: bold;
   color: #707070;
   display: flex;
   align-items: center;
-  width: 800px;
-  margin: auto;
+  width: 480px;
+  margin: 0 auto;
   position: relative;
 }
 
@@ -116,36 +53,108 @@ a {
 
 .month_now {
   display: grid;
-  width: 230px;
-  grid-template-columns: 100px auto 100px;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
+  width: 250px;
+  margin: 0 auto;
   border-bottom: 1px solid #707070;
+  place-content: center;
   color: #707070;
 }
 
-.month_now .span1 {
+.month_now .span{
   display: inline-block;
-  height: 20px;
+  height: 50px;
   line-height: 50px;
   vertical-align: bottom;
-  margin: 5px;
+  margin: 0 5px;
+}
+
+.month {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.calendar, .week, .days {
+  display: grid;
+}
+
+.calendar {
+  place-items: center ;
+}
+
+.week {
+  grid-template-columns: 160px 160px 160px 160px 160px 160px 160px;
+  grid-template-rows: 50px;
+  font-size: 21px;
+  font-weight: bold;
+  color: #7ccc47;
+  border: 1px solid #7ccc47;
+  margin: -1px;
+}
+
+.week>div {
+  border: 1px solid #7ccc47;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  line-height: 50px;
+}
+
+.days {
+  grid-template-columns: 160px 160px 160px 160px 160px 160px 160px;
+  grid-auto-rows: minmax(100px, auto);
+  grid-column-start: 1;
+  font-size: 29px;
+  font-weight: bold;
+  color: #7ccc47;
+  border: 1px solid #7ccc47;
+  margin: -1px;
+}
+
+.days>div {
+  padding-top: 5px;
+  padding-left: 15px;
+  border: 1px solid #7ccc47;
+}
+
+.days>div>ul>li {
+  font-size: 1rem;
+}
+
+.days>div>ul>li::before {
+  content: "・";
+}
+
+.sunday {
+  color: #FF6464;
+}
+
+.saturday {
+  color: #9999FF;
+}
+
+.blank {
+  background-color: antiquewhite;
+}
+
+.today {
+  background-color: aliceblue;
 }
 
 .days ul li span {
   display: inline-block;
-  width: 230px;
+  width: 23px;
+  height: 23px;
   text-align: center;
+  line-height: 23px;
   background-color: antiquewhite;
-  border-radius: 10px;
-  padding-top: 10px;
+  border-radius: 50%;
+  margin-left: 10px;
+  padding-top: 1px;
 }
 
 #form_close {
   position: absolute;
-  top: 15px;
+  top: 5px;
   right: 15px;
   font-size: 30px;
   cursor: pointer;
@@ -157,7 +166,7 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 9998;
+  z-index: 999;
   background-color: rgba(0, 0, 0, 0.2);
 }
 
@@ -197,10 +206,11 @@ a {
   margin: 0 35px 20px;
 }
 
-.priority_list, #calender_taskname {
+.priority_list, #calendar_taskname {
   width: var(--item-width);
   font-size: 22px;
   border-radius: 10px;
+  padding-right: 5px;
 }
 
 .taskname_wrap > label {
@@ -219,7 +229,7 @@ a {
   height: 40px;
 }
 
-#calender_taskname {
+#calendar_taskname {
   height: 120px;
   padding: 10px 10px 10px 15px;
   line-height: 35px;
@@ -266,6 +276,43 @@ h1 {
 #inputFormArea h2 {
   width: 80px;
   height: 40px;
+  margin-top: 40px;
+  border: 1px solid black;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+}
+
+.todo_wrap form {
+  width: 1010px;
+  height: 90px;
+  background-color: #faebd7;
+  display: flex;
+  margin-left: 20px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+#inputFormArea form div {
+  margin-right: 10px;
+}
+
+#inputFormArea form div p,
+#inputFormArea form div label {
+  color: #707070;
+  font-weight: bold;
+  padding-left: 20px;
+}
+
+#inputFormArea form div:first-of-type p {
+  text-align: center;
+  padding-left: 0;
+}
+
+#inputFormArea form div:nth-of-type(2), #inputFormArea form div:nth-of-type(4) {
+  width: 140px;
 }
 
 #inputFormArea form div span {
@@ -340,12 +387,12 @@ h1 {
   margin-bottom: 10px;
 }
 
-.taskarea--brock,
-.taskarea--brock ul {
+.taskarea--block,
+.taskarea--block ul {
   display: flex;
 }
 
-.taskarea--brock {
+.taskarea--block {
   width: 1100px;
   height: 60px;
   background-color: white;
@@ -355,17 +402,38 @@ h1 {
   margin-bottom: 10px;
 }
 
-.taskarea--brock ul li:nth-of-type(1) {
+.upper-btn, .lower-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 15px;
+  background-color: white;
+  color: #707070;
+  font-size: 27px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  margin-right: 5px;
+}
+
+.taskarea--block ul li {
+  border: 1px solid black;
+  border-radius: 20px;
+  margin-right: 10px;
+  padding-left: 20px;
+  line-height: 40px;
+}
+
+.taskarea--block ul li:nth-of-type(1) {
   width: 70px;
   padding-left: 25px;
 }
 
-.taskarea--brock ul li:nth-of-type(2),
-.taskarea--brock ul li:nth-of-type(4) {
+.taskarea--block ul li:nth-of-type(2),
+.taskarea--block ul li:nth-of-type(4) {
   width: 140px;
 }
 
-.taskarea--brock ul li:nth-of-type(3) {
+.taskarea--block ul li:nth-of-type(3) {
   width: 450px;
 }
 
@@ -385,39 +453,4 @@ h1 {
 
 .delete-btn {
   margin-right: 0px;
-}
-
-.taskarea--brock ul li {
-  border: 1px solid black;
-  border-radius: 20px;
-  margin-right: 10px;
-  padding-left: 20px;
-  line-height: 40px;
-}
-
-.todo_wrap form {
-  width: 1010px;
-  height: 90px;
-  background-color: #faebd7;
-  display: flex;
-  margin-left: 20px;
-  padding: 10px;
-  border: 1px solid black;
-  border-radius: 20px;
-}
-
-#inputFormArea form div {
-  margin-right: 10px;
-}
-
-#inputFormArea form div p,
-#inputFormArea form div label {
-  color: #707070;
-  font-weight: bold;
-  padding-left: 20px;
-}
-
-#inputFormArea form div:first-of-type p {
-  text-align: center;
-  padding-left: 0;
 }
